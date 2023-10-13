@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Implementando o ChartJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body style="display: flex;">
+    <div style="width: 500px">
+      <canvas id="linhas"></canvas>
+    </div>
+    <div style="width: 500px">
+      <canvas id="barras"></canvas>
+    </div>
+  </body>
+</html>
+<script>
+  const graficoLinha = document.getElementById("linhas");
+  const graficoBarra = document.getElementById("barras");
+
+  const labelHorario = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+
+  const dadosLinha = {
+    labels: labelHorario,
+    datasets: [
+      {
+        label: "Temperatura",
+        data: [30, 29, 28, 25, 22, 23],
+        borderColor: "rgb(232,105,132)",
+        backgroundColor: "rgb(232,105,132)",
+      },
+      {
+        label: "Umidade",
+        data: [80, 82, 80, 85, 80, 83],
+        borderColor: "rgb(54,162,235)",
+        backgroundColor: "rgb(54,162,235)",
+      },
+    ],
+  };
+
+  const configLinha = {
+    type: "line",
+    data: dadosLinha,
+    options: {},
+  };
+
+  const labelMeses = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+  ];
+  const dadosBarra = {
+    labels: labelMeses,
+    datasets: [
+      {
+        label: "Temperatura Média",
+        data: [22, 24, 27, 23, 20, 18],
+        backgroundColor: "rgb(232,105,132)",
+        borderColor: "rgb(232,105,132)",
+        borderWidth: 1,
+      },
+      {
+        label: "Umidade Média",
+        data: [90, 89, 93, 87, 88, 82],
+        backgroundColor: "rgb(54,162,235)",
+        borderColor: "rgb(54,162,235)",
+        borderWidth: 1,
+      }
+    ],
+  };
+  const configBarra = {
+    type: "bar",
+    data: dadosBarra,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
+
+  new Chart(graficoLinha, configLinha);
+  new Chart(graficoBarra, configBarra);
+</script>
